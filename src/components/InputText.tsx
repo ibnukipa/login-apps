@@ -21,7 +21,10 @@ const InputText: FunctionComponent<Props> = ({
       <RNTextInput
         {...props}
         placeholderTextColor={Colors.neutralPlaceholder}
-        style={textInputStyle.textInput}
+        style={[
+          textInputStyle.textInput,
+          errorMessage ? textInputStyle.textInputError : null,
+        ]}
       />
       {errorMessage && (
         <View style={textInputStyle.errorMessage}>
@@ -45,6 +48,9 @@ const textInputStyle = StyleSheet.create({
     borderColor: Colors.jadeGreenMin2,
     fontSize: 16,
     color: Colors.neutralMainText,
+  },
+  textInputError: {
+    borderColor: Colors.crimsonRedMin2,
   },
   errorMessage: {
     position: 'absolute',

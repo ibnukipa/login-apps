@@ -1,12 +1,17 @@
 import {useCallback, useMemo, useState} from 'react';
+import {registerOrLoginUser} from '../db/user';
+import {useErrorLogged} from './useRegistrationDB';
 
 const usernameRegex = /^[a-zA-Z0-9]+$/;
 const passwordRegex = /^(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
 const useRegistrationForm = () => {
   const [username, setUsername] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [usernameError, setUsernameError] = useState<string | undefined>();
   const [passwordError, setPasswordError] = useState<string | undefined>();
+  const [registrationSubmitError, setRegistrationSubmitError] =
+    useErrorLogged();
 
   const onChangeUsername = useCallback((username: string) => {
     setUsername(username);
@@ -19,12 +24,19 @@ const useRegistrationForm = () => {
 
   const onChangePassword = useCallback((password: string) => {
     setPassword(password);
+    setRegistrationSubmitError(undefined);
     if (!passwordRegex.test(password)) {
       setPasswordError('Username min 8 char, 1 lower, 1 upper, and 1 special');
     } else {
       setPasswordError(undefined);
     }
   }, []);
+
+  const onRegistrationSubmit = useCallback(() => {
+    if (username && password) {
+      registerOrLoginUser(username, password);
+    }
+  }, [username, password]);
 
   const isRegistrationValid = useMemo(() => {
     return !usernameError && !passwordError;
@@ -38,6 +50,8 @@ const useRegistrationForm = () => {
     onChangeUsername,
     onChangePassword,
     isRegistrationValid,
+    onRegistrationSubmit,
+    registrationSubmitError,
   };
 };
 

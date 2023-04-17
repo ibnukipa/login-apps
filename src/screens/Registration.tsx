@@ -17,6 +17,8 @@ const RegistrationScreen: FunctionComponent = () => {
     onChangeUsername,
     onChangePassword,
     isRegistrationValid,
+    onRegistrationSubmit,
+    registrationSubmitError,
   } = useRegistrationForm();
 
   return (
@@ -46,9 +48,10 @@ const RegistrationScreen: FunctionComponent = () => {
           placeholder={'Password'}
           value={password}
           onChangeText={onChangePassword}
-          errorMessage={passwordError}
+          errorMessage={passwordError || registrationSubmitError}
         />
         <Button
+          onPress={onRegistrationSubmit}
           disabled={!username || !password || !isRegistrationValid}
           text={'Bring Me In!'}
         />
