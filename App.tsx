@@ -5,6 +5,7 @@
  * @format
  */
 
+import 'react-native-gesture-handler';
 import React, {FunctionComponent} from 'react';
 import RegistrationScreen from './src/screens/Registration';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
