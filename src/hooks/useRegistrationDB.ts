@@ -2,7 +2,15 @@ import {useMMKVStorage} from 'react-native-mmkv-storage';
 import {userStorage} from '../db/user';
 
 const useErrorLogged = () => {
-  return useMMKVStorage('errorLogged', userStorage);
+  return useMMKVStorage<string>('errorLogged', userStorage);
 };
 
-export {useErrorLogged};
+const useLoggedIn = () => {
+  return useMMKVStorage<boolean>('loggedIn', userStorage);
+};
+
+const useSavedUsername = () => {
+  return useMMKVStorage<string>('savedUsername', userStorage);
+};
+
+export {useErrorLogged, useLoggedIn, useSavedUsername};

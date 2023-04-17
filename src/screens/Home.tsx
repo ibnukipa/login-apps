@@ -1,12 +1,17 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useCallback} from 'react';
 import {StatusBar, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Text from '../components/Text';
 import Button from '../components/Button';
 import Colors from '../theme/colors';
 import globalStyles from '../theme/globalStyles';
+import {logoutUser} from '../db/user';
 
 const HomeScreen: FunctionComponent = () => {
+  const onLogoutPress = useCallback(() => {
+    logoutUser();
+  }, []);
+
   return (
     <>
       <StatusBar
@@ -23,7 +28,7 @@ const HomeScreen: FunctionComponent = () => {
           color={Colors.neutralSecondaryText}>
           We're happy that you comeback!
         </Text>
-        <Button text={'Log Me Out'} />
+        <Button onPress={onLogoutPress} text={'Log Me Out'} />
       </SafeAreaView>
     </>
   );

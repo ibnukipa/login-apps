@@ -45,12 +45,14 @@ const RegistrationScreen: FunctionComponent = () => {
           errorMessage={usernameError}
         />
         <InputText
+          secureTextEntry
           placeholder={'Password'}
           value={password}
           onChangeText={onChangePassword}
           errorMessage={passwordError || registrationSubmitError}
         />
         <Button
+          style={styles.button}
           onPress={onRegistrationSubmit}
           disabled={!username || !password || !isRegistrationValid}
           text={'Bring Me In!'}
@@ -69,6 +71,9 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     marginBottom: 16,
+  },
+  button: {
+    marginTop: 16,
   },
 });
 
