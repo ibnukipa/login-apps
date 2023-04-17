@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 
 const usernameRegex = /^[a-zA-Z0-9]+$/;
 const passwordRegex = /^(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
@@ -26,6 +26,10 @@ const useRegistrationForm = () => {
     }
   }, []);
 
+  const isRegistrationValid = useMemo(() => {
+    return !usernameError && !passwordError;
+  }, [usernameError, passwordError]);
+
   return {
     username,
     usernameError,
@@ -33,6 +37,7 @@ const useRegistrationForm = () => {
     passwordError,
     onChangeUsername,
     onChangePassword,
+    isRegistrationValid,
   };
 };
 

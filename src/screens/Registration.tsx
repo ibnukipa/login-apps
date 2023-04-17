@@ -16,6 +16,7 @@ const RegistrationScreen: FunctionComponent = () => {
     passwordError,
     onChangeUsername,
     onChangePassword,
+    isRegistrationValid,
   } = useRegistrationForm();
 
   return (
@@ -47,7 +48,10 @@ const RegistrationScreen: FunctionComponent = () => {
           onChangeText={onChangePassword}
           errorMessage={passwordError}
         />
-        <Button disabled={!username || !password} text={'Bring Me In!'} />
+        <Button
+          disabled={!username || !password || !isRegistrationValid}
+          text={'Bring Me In!'}
+        />
       </SafeAreaView>
     </>
   );
