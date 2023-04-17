@@ -1,11 +1,11 @@
 import React, {FunctionComponent} from 'react';
-import Text from '../components/Text';
 import {StatusBar, StyleSheet} from 'react-native';
-import Colors from '../theme/colors';
-import globalStyles from '../theme/globalStyles';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Text from '../components/Text';
 import InputText from '../components/InputText';
 import Button from '../components/Button';
+import Colors from '../theme/colors';
+import globalStyles from '../theme/globalStyles';
 import useRegistrationForm from '../hooks/useRegistrationForm';
 
 const RegistrationScreen: FunctionComponent = () => {
