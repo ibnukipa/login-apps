@@ -1,6 +1,7 @@
 import React, {FunctionComponent} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import RegistrationScreen from '../screens/Registration';
+import PinScreen from '../screens/Pin';
 
 const AuthRouteStack = createStackNavigator();
 
@@ -10,6 +11,14 @@ const AuthRoute: FunctionComponent = () => {
       <AuthRouteStack.Screen
         name={'registration'}
         component={RegistrationScreen}
+      />
+      <AuthRouteStack.Screen
+        options={{
+          gestureEnabled: false,
+          ...TransitionPresets.ModalPresentationIOS,
+        }}
+        name={'Pin'}
+        component={PinScreen}
       />
     </AuthRouteStack.Navigator>
   );

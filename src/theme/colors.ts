@@ -19,6 +19,9 @@ const Colors = {
   crimsonRedMin1: '#F46E92',
   crimsonRedMin2: '#F9B6C9',
   crimsonRedMin3: '#FDE9EF',
+
+  transparent: 'transparent',
+  black: '#000',
 };
 
 export default Colors;

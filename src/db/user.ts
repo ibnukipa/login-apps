@@ -1,4 +1,5 @@
 import {MMKVLoader} from 'react-native-mmkv-storage';
+import protectFunctionWithPin from '../utils/protectFunctionWithPin';
 
 const userStorage = new MMKVLoader()
   .withEncryption()
@@ -24,10 +25,10 @@ const registerOrLoginUser = async (username: string, password: string) => {
 
   if (!existingUser) {
     await userStorage.setStringAsync(username, password);
-    await signInUser(username);
+    protectFunctionWithPin(async () => await signInUser(username));
   } else {
     if (existingUser === password) {
-      await signInUser(username);
+      protectFunctionWithPin(async () => await signInUser(username));
     } else {
       await userStorage.setStringAsync('errorLogged', 'Wrong password!');
     }
