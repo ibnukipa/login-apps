@@ -30,7 +30,7 @@ const useRegistrationForm = () => {
       setRegistrationSubmitError(undefined);
       if (!passwordRegex.test(passwordInput)) {
         setPasswordError(
-          'Username min 8 char, 1 lower, 1 upper, and 1 special',
+          'Password min 8 char, 1 lower, 1 upper, and 1 special',
         );
       } else {
         setPasswordError(undefined);
