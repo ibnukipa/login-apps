@@ -15,9 +15,9 @@ const useRegistrationForm = () => {
   const [usernameError, setUsernameError] = useState<string | undefined>();
   const [passwordError, setPasswordError] = useState<string | undefined>();
 
-  const onChangeUsername = useCallback((username: string) => {
-    setUsername(username);
-    if (!usernameRegex.test(username)) {
+  const onChangeUsername = useCallback((usernameInput: string) => {
+    setUsername(usernameInput);
+    if (!usernameRegex.test(usernameInput)) {
       setUsernameError('Username must be letter and/or digit');
     } else {
       setUsernameError(undefined);
@@ -25,10 +25,10 @@ const useRegistrationForm = () => {
   }, []);
 
   const onChangePassword = useCallback(
-    (password: string) => {
-      setPassword(password);
+    (passwordInput: string) => {
+      setPassword(passwordInput);
       setRegistrationSubmitError(undefined);
-      if (false) {
+      if (!passwordRegex.test(passwordInput)) {
         setPasswordError(
           'Username min 8 char, 1 lower, 1 upper, and 1 special',
         );
