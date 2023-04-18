@@ -1,13 +1,11 @@
 # LoginApp
 
 ### iOS Preview
-<video src="https://youtu.be/ikykQFc6IRs" width="400" />
-[![link demo](https://asciinema.org/a/113463.png)](https://youtu.be/ikykQFc6IRs)
+[link demo](https://youtu.be/ikykQFc6IRs)
 
 
 ### Android Preview
-<video src="https://youtu.be/gGKctPyVd6Q" width="400" />
-[![link demo](https://asciinema.org/a/113463.png)](https://youtu.be/gGKctPyVd6Q)
+[link demo](https://youtu.be/gGKctPyVd6Q)
 
 - [x] Login and Register
 - [x] OTP Input
